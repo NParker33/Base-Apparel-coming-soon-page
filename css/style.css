@@ -1,0 +1,242 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;600&display=swap');
+
+:root {
+    --primary-bg: hsl(0, 100%, 99%);
+    --main-text: hsl(0, 36%, 70%);
+    --soft-red: hsl(0, 93%, 68%);
+    --dark-gray-red: hsl(0,6%,24%);
+
+    /*
+    For gradients:
+        linear, 135deg, from hsl(0,0,100) to hsl(0,100,98)
+        linear, 135deg, from hsl(0,80,86) to hsl(0,74,74)
+    */
+}
+/* reset browser defaults*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* base styles */
+body {
+    width: 100%;
+    height: 100vh;
+    background-color: var(--primary-bg);
+    font-family: 'Josefin Sans', sans-serif;
+    color: var(--main-text);
+}
+
+.container {
+    display: grid;
+    grid-template-columns: repeat(12,1fr);
+    gap: 10px;
+    height: 100%;
+}
+
+#logo {
+    margin: 30px;
+    width: 75%;
+    grid-column: 1/ span 5;
+}
+.hero {
+    grid-column: 1 / -1;
+    grid-row: 2;
+    background-image: url('../assets/hero-mobile.jpg');
+    background-size: 100%;
+    background-repeat: no-repeat;
+    height: 250px;
+    width: 100%;
+}
+
+#welcome {
+    grid-row: 3;
+    grid-column: 1/-1;
+    text-align: center;
+    padding: 25px;
+    margin-bottom: 50px;
+}
+
+#welcome h1 {
+    font-size: 40px;
+    color: var(--dark-gray-red);
+    text-transform: uppercase;
+    letter-spacing: .2em;
+    margin: 15px;
+}
+
+span {
+    font-weight: 300;
+    color: var(--main-text);
+}
+
+#welcome p {
+    line-height: 1.7;
+    margin-bottom: 40px;
+}
+
+form {
+    position: relative;
+    height: 50px;
+}
+
+#emailInput{
+    width: 100%;
+    height: 100%;
+    padding-left: 20px;
+    border: 1px solid rgba(206,151,151,0.5);
+    border-radius: 50vw;
+    background-color: transparent;
+}
+#emailInput::placeholder {
+    color: var(--main-text);
+    font-family: 'Josefin Sans', sans-serif;
+}
+
+input[type=text]:focus{
+    outline: none;
+}
+
+.btn {
+    height: 100%;
+    width: 25%;
+    border-radius: 50vw;
+    cursor: pointer;
+    background: linear-gradient(135deg, hsl(0,80%,86%), hsl(0,74%,74%));
+    box-shadow: 0 7px 10px 1px rgba(0,0,0,.1);
+    transition: all ease .2s;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 0;
+    right: 0;
+}
+.btn:hover{
+    background: linear-gradient(135deg, hsl(0,0%,100%), hsl(0,100%,88%));
+    box-shadow: 0 10px 10px 1px rgba(0,0,0,.1);
+    transform: scaleY(1.1);
+}
+
+#errorIcon {
+    position: absolute;
+    right: 25%;
+    top: 25%;
+    margin-right: 20px;
+}
+
+#errorMessageEl {
+    position:absolute;
+    color: var(--soft-red);
+    margin-left: 5%;
+}
+
+.hidden{
+    display: none;
+}
+
+.invalid{
+    outline: 1px solid var(--soft-red);
+}
+
+/* mobile styles*/
+/* small tablets */
+@media screen and (min-width: 450px){
+    #welcome {
+        grid-column: 2 / span 10;
+    }
+}
+
+@media screen and (min-width: 700px){
+    .hero{
+        height: 400px;
+    }
+    #welcome{
+        grid-column: 3 / span 8;
+    }
+
+    #welcome h1{
+        font-size: 55px;
+    }
+}
+
+/* large tablet & laptop styles */
+@media screen and (min-width: 850px){
+    body {
+        background-image: url('../assets/bg-pattern-desktop.svg');
+    }
+    .container{
+        height: 100vh;
+    }
+    #logo {
+        width: 30%;
+        grid-column: 2 / span 5;
+        margin-left: 20px;
+        margin-top: 50px;
+    }
+    .hero {
+        grid-column: 8 /-1;
+        grid-row: 1/ span 2;
+        background-image: url('../assets/hero-desktop.jpg');
+        background-size: 100% 100%;
+        height: 100%;
+
+    }
+    #welcome {
+        grid-column: 2 / span 5;
+        grid-row: 2;
+        text-align: left;
+    }
+
+    #welcome h1{
+        line-height: 1.2;
+        margin-left: 0;
+    }
+
+}
+
+@media screen and (min-width: 1400px){
+    #welcome {
+        grid-column: 2 / span 4;
+    }
+    #welcome h1 {
+        font-size: 4rem;
+    }
+}
+
+/* desktop styles */
+@media screen and (min-width: 2000px){
+    #logo{
+        grid-column: 3 / span 5
+    }
+    #welcome{
+        grid-column: 3/ span 4;
+    }
+    #welcome h1{
+        font-size: 7.5rem;
+    }
+    #welcome p{
+        font-size: 2.2rem;
+        margin-bottom: 100px;
+    }
+    form {
+        height: 10%;
+    }
+
+    #emailInput{
+        height: 100%;
+    }
+    #emailInput{
+        font-size: 1.7rem
+    }
+    .btn img{
+        width: 15%;
+    }
+    #errorIcon{
+        width: 5%;
+    }
+    .hero {
+        grid-column: 9 / -1;
+    }
+}
